@@ -3,4 +3,4 @@ The official implement of ["Unleashing MLLMs on the Edge: A Unified Framework fo
 
 The model can be found [here](https://huggingface.co/KingH12138/MLLMEmbed-ReID-Cloud)
 
-Reference github: [MLLMEmbed](https://github.com/TIGER-AI-Lab/VLM2Vec)
+Reference github: [MMEmbed](https://github.com/TIGER-AI-Lab/VLM2Vec)
