@@ -5,77 +5,7 @@ dataset:
 -images
 -data.csv
 """
-import sys, os, csv
 sys.path.append(os.path.abspath("./"))
-
-# from reid_datasets.market1501 import Market1501
-# from reid_datasets.msmt17 import MSMT17
-# from reid_datasets.dukemtmcreid import DukeMTMCreID
-
-import os,json,random
-import pandas as pd
-
-# def dukemtmc_to_mllm(reid_data_dir,output_dir):
-#     dataset = DukeMTMCreID(reid_data_dir)
-#     # 获取训练集
-#     train_list = dataset.train  # ele:absolute_path,pid,camid,1
-#     query_list = dataset.query
-#     gallery_list = dataset.gallery
-#     # 获取最大的pid和camid
-#     max_pid = max([x[1] for x in train_list])
-#     max_camid = max([x[2] for x in train_list])
-#     # 将其转为train_list转为包含absolute_path,pid,camid三个字段的csv文件
-#     with open(output_dir + "/dukemtmcreid_train.csv", "w") as f:
-#         f.write("image_path,pid,camid,type\n")
-#         for x in train_list:
-#             f.write(f"{x[0]},{x[1]},{x[2]},train\n")
-#         for x in query_list:
-#             f.write(f"{x[0]},{x[1]},{x[2]},query\n")
-#         for x in gallery_list:
-#             f.write(f"{x[0]},{x[1]},{x[2]},gallery\n")
-#     return max_pid, max_camid
-
-# def market1501_to_mllm(reid_data_dir,output_dir):
-#     dataset = Market1501(reid_data_dir)
-#     # 获取训练集
-#     train_list = dataset.train  # ele:absolute_path,pid,camid,1
-#     query_list = dataset.query
-#     gallery_list = dataset.gallery
-#     # 获取最大的pid和camid
-#     max_pid = max([x[1] for x in train_list])
-#     max_camid = max([x[2] for x in train_list])
-#     # 将其转为train_list转为包含absolute_path,pid,camid三个字段的csv文件
-#     with open(output_dir + "/market1501_train.csv", "w") as f:
-#         f.write("image_path,pid,camid,type\n")
-#         for x in train_list:
-#             f.write(f"{x[0]},{x[1]},{x[2]},train\n")
-#         for x in query_list:
-#             f.write(f"{x[0]},{x[1]},{x[2]},query\n")
-#         for x in gallery_list:
-#             f.write(f"{x[0]},{x[1]},{x[2]},gallery\n")
-#     return max_pid, max_camid
-
-# def msmt17_to_mllm(reid_data_dir,output_dir):
-#     dataset = MSMT17(reid_data_dir)
-#     # 获取训练集
-#     train_list = dataset.train  # ele:absolute_path,pid,camid,1
-#     query_list = dataset.query
-#     gallery_list = dataset.gallery
-#     # 获取最大的pid和camid
-#     max_pid = max([x[1] for x in train_list])
-#     max_camid = max([x[2] for x in train_list])
-#     # 将其转为train_list转为包含absolute_path,pid,camid三个字段的csv文件
-#     with open(output_dir + "/msmt17_train.csv", "w") as f:
-#         f.write("image_path,pid,camid,type\n")
-#         for x in train_list:
-#             f.write(f"{x[0]},{x[1]},{x[2]},train\n")
-#         for x in query_list:
-#             f.write(f"{x[0]},{x[1]},{x[2]},query\n")
-#         for x in gallery_list:
-#             f.write(f"{x[0]},{x[1]},{x[2]},gallery\n")
-#     return max_pid, max_camid
-
-
 import tqdm
 import pandas as pd
 
@@ -159,7 +89,7 @@ def aio_to_mllm(aio_dataset_dir,json_name,output_path, two_caption=False):
         
 if __name__ == "__main__":
     # 这里合并三个数据集
-    data0 = aio_to_mllm('/Youtu-VITA/hongbojiang/datasets/aio_reid/CUHK-PEDES','reid_raw.json','/Youtu-VITA/hongbojiang/datasets/aio_reid/cuhkpedes_aio_train.csv')
-    data1 = aio_to_mllm('/Youtu-VITA/hongbojiang/datasets/aio_reid/ICFG-PEDES','ICFG-PEDES.json','/Youtu-VITA/hongbojiang/datasets/aio_reid/icfgpedes_aio_train.csv')
-    data2 = aio_to_mllm('/Youtu-VITA/hongbojiang/datasets/aio_reid/RSTPReid','data_captions.json','/Youtu-VITA/hongbojiang/datasets/aio_reid/rstpreid_aio_train.csv')
+    data0 = aio_to_mllm('/hongbojiang/datasets/aio_reid/CUHK-PEDES','reid_raw.json','/hongbojiang/datasets/aio_reid/cuhkpedes_aio_train.csv')
+    data1 = aio_to_mllm('/hongbojiang/datasets/aio_reid/ICFG-PEDES','ICFG-PEDES.json','/hongbojiang/datasets/aio_reid/icfgpedes_aio_train.csv')
+    data2 = aio_to_mllm('/hongbojiang/datasets/aio_reid/RSTPReid','data_captions.json','/hongbojiang/datasets/aio_reid/rstpreid_aio_train.csv')
     print("生成完毕")
